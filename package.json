@@ -1,0 +1,220 @@
+{
+	"name": "snippetscodemanagerjs",
+	"displayName": "SnippetsCodemanagerJS",
+	"description": "snippet code manager gui",
+	"version": "1.0.0",
+	"engines": {
+		"vscode": "^1.46.0"
+	},
+	"categories": [
+		"Snippets"
+	],
+	"activationEvents": [
+		"onCommand:snippetscodemanagerjs.run",
+		"onCommand:snippetExplorer.open",
+		"onView:snippetExplorer"
+	],
+	"main": "./extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "snippetscodemanagerjs.run",
+				"title": "create snippet by select",
+				"category": "ES"
+			},
+			{
+				"command": "snippetscodemanagerjs.open",
+				"title": "open snippet view",
+				"category": "ES"
+			},
+			{
+				"command": "snippetExplorer.search",
+				"title": "search snippet",
+				"category": "ES",
+				"icon": {
+					"light": "resources/light/search.svg",
+					"dark": "resources/dark/search.svg"
+				}
+			},
+			{
+				"command": "snippetExplorer.refresh",
+				"title": "Refresh",
+				"category": "ES",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "snippetExplorer.addGroup",
+				"title": "Add Group",
+				"category": "ES",
+				"icon": {
+					"light": "resources/light/add.svg",
+					"dark": "resources/dark/add.svg"
+				}
+			},
+			{
+				"command": "snippetExplorer.addSnippet",
+				"title": "Add Snippet",
+				"category": "ES",
+				"icon": {
+					"light": "resources/light/add.svg",
+					"dark": "resources/dark/add.svg"
+				}
+			},
+			{
+				"command": "snippetExplorer.editGroup",
+				"title": "Edit Group",
+				"category": "ES",
+				"icon": {
+					"light": "resources/light/edit.svg",
+					"dark": "resources/dark/edit.svg"
+				}
+			},
+			{
+				"command": "snippetExplorer.deleteGroup",
+				"title": "Delete Group",
+				"category": "ES",
+				"icon": {
+					"light": "resources/light/delete.svg",
+					"dark": "resources/dark/delete.svg"
+				}
+			},
+			{
+				"command": "snippetExplorer.deleteSnippet",
+				"title": "Delete Snippet",
+				"category": "ES",
+				"icon": {
+					"light": "resources/light/delete.svg",
+					"dark": "resources/dark/delete.svg"
+				}
+			},
+			{
+				"command": "snippetExplorer.editSnippet",
+				"title": "Edit Snippet",
+				"category": "ES",
+				"icon": {
+					"light": "resources/light/edit.svg",
+					"dark": "resources/dark/edit.svg"
+				}
+			}
+		],
+		"keybindings": [
+			{
+				"command": "snippetscodemanagerjs.run",
+				"key": "ctrl+k shift+ctrl+s",
+				"mac": "cmd+k shift+cmd+s",
+				"when": "editorTextFocus"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "snippet-explorer",
+					"title": "Snippet",
+					"icon": "media/snippet.svg"
+				}
+			]
+		},
+		"views": {
+			"snippet-explorer": [
+				{
+					"id": "snippetExplorer",
+					"name": "Snippet Manage"
+				}
+			]
+		},
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "snippetscodemanagerjs.run",
+					"when": "editorHasSelection"
+				},
+				{
+					"command": "snippetExplorer.addSnippet",
+					"when": "1 == 2"
+				},
+				{
+					"command": "snippetExplorer.editGroup",
+					"when": "1 == 2"
+				},
+				{
+					"command": "snippetExplorer.deleteGroup",
+					"when": "1 == 2"
+				},
+				{
+					"command": "snippetExplorer.deleteSnippet",
+					"when": "1 == 2"
+				},
+				{
+					"command": "snippetExplorer.editSnippet",
+					"when": "1 == 2"
+				}
+			],
+			"view/title": [
+				{
+					"command": "snippetExplorer.search",
+					"when": "view == snippetExplorer",
+					"group": "navigation"
+				},
+				{
+					"command": "snippetExplorer.refresh",
+					"when": "view == snippetExplorer",
+					"group": "navigation"
+				},
+				{
+					"command": "snippetExplorer.addGroup",
+					"when": "view == snippetExplorer",
+					"group": "navigation"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "snippetExplorer.addSnippet",
+					"when": "view == snippetExplorer && viewItem == group",
+					"group": "inline@1"
+				},
+				{
+					"command": "snippetExplorer.editGroup",
+					"when": "view == snippetExplorer && viewItem == group",
+					"group": "inline@2"
+				},
+				{
+					"command": "snippetExplorer.deleteGroup",
+					"when": "view == snippetExplorer && viewItem == group",
+					"group": "inline@3"
+				},
+				{
+					"command": "snippetExplorer.deleteSnippet",
+					"when": "view == snippetExplorer && viewItem == snippet",
+					"group": "inline"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./node_modules/vscode/bin/test"
+	},
+	"dependencies": {
+		"@types/vscode": "^1.17.0"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^7.0.2",
+		"@types/node": "^13.11.0",
+		"@types/vscode": "^1.46.0",
+		"eslint": "^6.8.0",
+		"glob": "^7.1.6",
+		"mocha": "^7.1.2",
+		"typescript": "^3.8.3",
+		"vscode": "^1.1.37"
+	},
+	"__metadata": {
+		"id": "",
+		"publisherId": "",
+		"publisherDisplayName": "zbahadir"
+	}
+}
