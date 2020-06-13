@@ -59,7 +59,7 @@ class SCMProvider {
 
 			let contextValue = 'snippet';
 			let command = {
-				command: 'snippetExplorer.editSnippet',
+				command: 'snippetCMExplorer.editSnippet',
 				arguments: [{ languageId, key }],
 				title: 'Edit Snippet.'
 			};

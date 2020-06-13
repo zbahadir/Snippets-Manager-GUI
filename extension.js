@@ -10,19 +10,19 @@ const utils = require("./common/utils");
 function activate(context) {
 
 	let provider = new SCMProvider();
-    let explorer = vscode.window.createTreeView('snippetExplorer', { treeDataProvider: provider });
+    let explorer = vscode.window.createTreeView('snippetCMExplorer', { treeDataProvider: provider });
     provider.tree = explorer;
     context.subscriptions.push(
-        vscode.window.registerTreeDataProvider('snippetExplorer', provider),
-        vscode.commands.registerCommand('snippetExplorer.refresh', provider.refresh.bind(provider)),
-        vscode.commands.registerCommand('snippetExplorer.addGroup', provider.addGroup.bind(provider)),
-        vscode.commands.registerCommand('snippetExplorer.addSnippet', provider.addSnippet.bind(provider)),
-        vscode.commands.registerCommand('snippetExplorer.editGroup', provider.editGroup.bind(provider)),
-        vscode.commands.registerCommand('snippetExplorer.deleteGroup', provider.deleteGroup.bind(provider)),
-        vscode.commands.registerCommand('snippetExplorer.deleteSnippet', provider.deleteSnippet.bind(provider)),
-        vscode.commands.registerCommand('snippetExplorer.editSnippet', provider.editSnippet.bind(provider)),
-        vscode.commands.registerCommand('snippetExplorer.search',provider.search.bind(provider)),
-        vscode.commands.registerCommand('snippetExplorer.open', function() {
+        vscode.window.registerTreeDataProvider('snippetCMExplorer', provider),
+        vscode.commands.registerCommand('snippetCMExplorer.refresh', provider.refresh.bind(provider)),
+        vscode.commands.registerCommand('snippetCMExplorer.addGroup', provider.addGroup.bind(provider)),
+        vscode.commands.registerCommand('snippetCMExplorer.addSnippet', provider.addSnippet.bind(provider)),
+        vscode.commands.registerCommand('snippetCMExplorer.editGroup', provider.editGroup.bind(provider)),
+        vscode.commands.registerCommand('snippetCMExplorer.deleteGroup', provider.deleteGroup.bind(provider)),
+        vscode.commands.registerCommand('snippetCMExplorer.deleteSnippet', provider.deleteSnippet.bind(provider)),
+        vscode.commands.registerCommand('snippetCMExplorer.editSnippet', provider.editSnippet.bind(provider)),
+        vscode.commands.registerCommand('snippetCMExplorer.search',provider.search.bind(provider)),
+        vscode.commands.registerCommand('snippetCMExplorer.open', function() {
             explorer.reveal(provider.getChildren()[0]);
         }),
         
