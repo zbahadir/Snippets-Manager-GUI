@@ -196,8 +196,9 @@ class SCMProvider {
 		// this.addSnippet(groupName)		
 	}
 
-	async editGroup(item) {
-		let filename = this.snippetPath(item.label);
+	async editGroup(item) {	
+		let snippetFile = await this.getFilePos(item.label);
+		let filename = this.snippetPath(snippetFile);
 		vscode.window.showTextDocument(vscode.Uri.file(filename));
 	}
 	// DELETE GROUP
