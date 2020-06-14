@@ -1,0 +1,45 @@
+
+
+
+
+
+
+
+        		"productIconThemes": [
+			{
+				"id": "vscode-v1-icons",
+				"label": "VSCode 1.0 Icons",
+				"path": "./theme/v1-product-icon-theme.json"
+			}
+		],
+
+
+
+        	"iconThemes": [
+			{
+				"id": "vscode-icons",
+				"label": "VSCode Icons",
+				"path": "dist/src/vsicons-icon-theme.json",
+				"_watch": true
+			}
+		],
+
+		        	"productIconThemes": [
+			{
+				"id": "vscode-v1-icons",
+				"label": "VSCode 1.0 Icons",
+				"path": "./theme/v1-product-icon-theme.json"
+			}
+		],
+		
+
+		export interface TreeItemProps {
+    label?: string;
+    id?: string;
+    iconPath?: string | vscode.Uri | { light: string | vscode.Uri; dark: string | vscode.Uri } | vscode.ThemeIcon;
+    description?: string | boolean;
+    resourceUri?: vscode.Uri;
+    tooltip?: string | undefined;
+    command?: string | vscode.Command;
+    contextValue?: string;
+}

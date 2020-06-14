@@ -44,15 +44,10 @@ const utils = {
         json_caches[filename] = cache;
         return cache.data;
     },
-    getSelectedText() {
-        
-        let editer = vscode.window.activeTextEditor;
-        
-        
+    getSelectedText() {        
+        let editer = vscode.window.activeTextEditor; 
         let content = editer.document.getText(editer.selection);
-        console.log('getSelectedText: ', content);
-        
-        //return content;
+        return content;
     },
     insertContent(content) {
         let editer = vscode.window.activeTextEditor;

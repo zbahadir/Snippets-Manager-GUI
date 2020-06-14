@@ -17,7 +17,9 @@
 		"onView:snippetCMExplorer"
 	],
 	"main": "./extension",
+	"enableProposedApi": true,
 	"contributes": {
+
 		"commands": [
 			{
 				"command": "snippetscodemanagerjs.run",
@@ -212,8 +214,10 @@
 		"eslint": "^6.8.0",
 		"glob": "^7.1.6",
 		"mocha": "^7.1.2",
+		"open": "^7.0.4",
 		"typescript": "^3.8.3",
-		"vscode": "^1.1.37"
+		"vscode": "^1.1.37",
+		"webfonts-generator": "^0.4.0"
 	},
 	"__metadata": {
 		"id": "",
