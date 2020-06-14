@@ -19,7 +19,6 @@
 	"main": "./extension",
 	"enableProposedApi": true,
 	"contributes": {
-
 		"commands": [
 			{
 				"command": "snippetscodemanagerjs.run",

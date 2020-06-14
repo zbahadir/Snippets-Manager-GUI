@@ -12,7 +12,7 @@ class SCMProvider {
 		this.tree;
 	}
 
-	getfolderIcon(data) {
+	getfolderIcons(data) {
 		// cerate folder name
 		//let folder_name = 'folder_type_'+data.slice(0, -14)+'.svg';
 		let folder_name = 'folder_type_'+data.split(".")[0]+'.svg'; // new multi file types
@@ -25,6 +25,27 @@ class SCMProvider {
 		}
 		return folder_name;
 	}
+	
+	getFileIcons(type) {
+		let file_icon = 'file_type_'+ type +'.svg';
+		
+		// check exist forder icon
+		let fileIconWithPath = path.join(__filename, '..', '..', 'resources', 'icons', file_icon );
+		if (!fs.existsSync(fileIconWithPath)){
+			file_icon = 'default_file.svg';
+		}
+		
+		return file_icon;
+	}
+	
+	async getFilePos(group) {
+		let languages = await vscode.languages.getLanguages();
+        if(languages.indexOf(group) === -1){
+			return group + '.code-snippets';
+        } else {
+			return group + '.json'
+		}
+	}
 
 	async getChildren(element) {		
 		if (!element) {
@@ -35,8 +56,8 @@ class SCMProvider {
 				contextValue: 'group',
 				collapsibleState: true,
 				iconPath: {
-					light: path.join(__filename, '..', '..', 'resources', 'icons', this.getfolderIcon(x)),
-					dark: path.join(__filename, '..', '..', 'resources', 'icons', this.getfolderIcon(x))
+					light: path.join(__filename, '..', '..', 'resources', 'icons', this.getfolderIcons(x)),
+					dark: path.join(__filename, '..', '..', 'resources', 'icons', this.getfolderIcons(x))
 				}
 			}));
 		}
@@ -171,9 +192,6 @@ class SCMProvider {
 			fs.writeFileSync(sf, '{}');
 			this.refresh();	
 		}
-		
-
-		
 		// to add snippet 	
 		// this.addSnippet(groupName)		
 	}
@@ -286,8 +304,8 @@ class SCMProvider {
 			let description = v.description;
 			let contextValue = 'snippet';
 			let iconPath = {
-				light: path.join(__filename, '..', '..', 'resources', 'icons', 'file_type_'+ v.type +'.svg'),
-				dark: path.join(__filename, '..', '..', 'resources', 'icons', 'file_type_'+ v.type +'.svg')
+				light: path.join(__filename, '..', '..', 'resources', 'icons', this.getFileIcons(v.type) ),
+				dark: path.join(__filename, '..', '..', 'resources', 'icons', this.getFileIcons(v.type))
 			};
 			let command = {
 				command: 'snippetCMExplorer.editSnippet',
@@ -332,15 +350,6 @@ class SCMProvider {
 		this.tree.reveal({ languageId, label: key });
 		this.editSnippet({key, languageId})
 		
-	}
-
-	async getFilePos(group) {
-		let languages = await vscode.languages.getLanguages();
-        if(languages.indexOf(group) === -1){
-			return group + '.code-snippets';
-        } else {
-			return group + '.json'
-		}
 	}
 
 }
